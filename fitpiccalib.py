@@ -14,7 +14,7 @@ from lmfit.models import ExponentialModel, GaussianModel
 # content = open('HDX004411_10-13-13-243.txt').readlines()[14:]
 # content = open('HDX004411_14-25-09-210.txt').readlines()[14:]
 # content = open('HDX004411_15-21-26-328.txt').readlines()[14:]
-content = open('HDX004411_15-26-27-108.txt').readlines()[14:] # 20/20 um, s=1.3
+content = open('data/HDX004411_15-26-27-108.txt').readlines()[14:] # 20/20 um, s=1.3
 
 # content = open('spectre_lampe_calib_100ms.txt').readlines()[14:]
 
