@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from lmfit.models import ExponentialModel, GaussianModel
 
+from data.Hg2_calibration_lamp import calib_lines
+
 #spectre_lampe_calib_100ms.dat
 #dat = np.loadtxt('spectre_lampe_calib_10ms.txt')
 content = open('spectre_lampe_calib_100ms.txt').readlines()[14:]
@@ -33,10 +35,7 @@ def fit_pic(wl):
 
     x = np_x[i_min:i_max]
     y = np_y[i_min:i_max]
-    # x = dat[:, 0]
-    # y = dat[:, 1]
-
-
+ 
     exp_mod = ExponentialModel(prefix='exp_')
     pars = exp_mod.guess(y, x=x)
 
@@ -80,33 +79,8 @@ def fit_pic(wl):
 
     plt.show()
 
-
-fit_pic(296)
-fit_pic(302)
-fit_pic(313)
-fit_pic(334)
-fit_pic(365)
-fit_pic(404)
-
-fit_pic(435)
-
-
-fit_pic(696)
-fit_pic(706)
-fit_pic(714)
-
-fit_pic(738)
-fit_pic(750)
-fit_pic(763)
-fit_pic(772)
-
-fit_pic(800)
-
-fit_pic(826)
-fit_pic(842)
-fit_pic(852)
-fit_pic(866)
-fit_pic(912)
+for one in calib_lines:
+    fit_pic(one)
 
 plt.figure()
 plt.plot(wlg,fwhm,'+b')
