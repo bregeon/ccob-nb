@@ -10,7 +10,7 @@ from lmfit.models import ExponentialModel, GaussianModel
 from spectro.spectro import read_data
 
 
-def fit_peak(wl, np_x, np_y, plot_components=False):
+def fit_peak(wl, np_x, np_y, with_plot=True, plot_components=False):
     ''' Fit one peak
         wl wavelength
         x axis values as a numpy array
@@ -36,18 +36,19 @@ def fit_peak(wl, np_x, np_y, plot_components=False):
     out = mod.fit(y, pars, x=x)
     print(out.fit_report(min_correl=0.5))
 
-    plt.figure()
-    plt.plot(x, y, 'b+--',label='data')
-    plt.plot(x, init, 'k--')
-    plt.plot(x, out.best_fit, 'r',label='fit')
-    plt.legend()
-
-    if plot_components:
-        comps = out.eval_components(x=x)
-        plt.plot(x, comps['g1_'], 'b--')
-        plt.plot(x, comps['exp_'], 'k--')
-
-    plt.show()
+    if with_plot:
+        plt.figure()
+        plt.plot(x, y, 'b+--',label='data')
+        plt.plot(x, init, 'k--')
+        plt.plot(x, out.best_fit, 'r',label='fit')
+        plt.legend()
+        if plot_components:
+            comps = out.eval_components(x=x)
+            plt.plot(x, comps['g1_'], 'b--')
+            plt.plot(x, comps['exp_'], 'k--')
+        plt.show()
+        
+    return out
 
 
 if __name__ == "__main__":
