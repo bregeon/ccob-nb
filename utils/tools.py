@@ -7,6 +7,8 @@ Created on Tue 09 Jul 2019 03:30:31 PM CEST
 import matplotlib.pyplot as plt
 import numpy as np
 from lmfit.models import ExponentialModel, GaussianModel
+from spectro.spectro import read_data
+
 
 def fit_peak(wl, np_x, np_y, plot_components=False):
     ''' Fit one peak
@@ -46,3 +48,9 @@ def fit_peak(wl, np_x, np_y, plot_components=False):
         plt.plot(x, comps['exp_'], 'k--')
 
     plt.show()
+
+
+if __name__ == "__main__":
+    # get data from text file and fit
+    np_x, np_y = read_data('data/HDX004411_11-07-07-346.txt')
+    fit_peak(400, np_x, np_y, plot_components=False)
