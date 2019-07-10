@@ -7,7 +7,7 @@ Created on Mon Jul  1 10:23:22 2019
 
 import sys
 from utils.tools import fit_peak
-from spectro.spectro import read_data
+from spectro.spectro import read_data, plot_spectrum
 
 
 if __name__ == "__main__":
@@ -22,5 +22,7 @@ if __name__ == "__main__":
 
     # read data from file
     np_x, np_y = read_data(file_path)
+    # show full spectrum
+    # plot_spectrum(np_x, np_y)
     # fit the line
     fit_peak(wl, np_x, np_y)

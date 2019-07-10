@@ -24,7 +24,7 @@ if __name__ == "__main__":
     # read spectrum data
     np_x, np_y = read_data('data/spectre_lampe_calib_100ms.txt')
     # plot spectrum data
-    # plot_spectrum(np_x, np_y)
+    plot_spectrum(np_x, np_y)
     # fit all the lines
     fwhm_list=list()
     for one in calib_lines:

@@ -43,6 +43,8 @@ def plot_spectrum(np_x, np_y):
     '''
     plt.figure()
     plt.plot(np_x, np_y, 'b+--',label='data')
+    plt.xlabel(r'$\lambda$ (nm)')
+    plt.ylabel('Counts')
     plt.show()
 
 
