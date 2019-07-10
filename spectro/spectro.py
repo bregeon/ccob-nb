@@ -5,6 +5,7 @@ Created on Tue 09 Jul 2019 04:43:23 PM CEST
 
 @author: bregeon
 """
+import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -37,6 +38,13 @@ def read_data(file_path):
 
     return np_x, np_y
 
+def plot_spectrum(np_x, np_y):
+    ''' Plot a spectrum from x and y numpy arrays
+    '''
+    plt.figure()
+    plt.plot(np_x, np_y, 'b+--',label='data')
+    plt.show()
+
 
 if __name__ == "__main__":
     # get data from text file
@@ -44,3 +52,5 @@ if __name__ == "__main__":
     # print a few lines
     for i in range(10):
         print('{} {}'.format(np_x[i], np_y[i]))
+    # plot data
+    plot_spectrum(np_x, np_y)
