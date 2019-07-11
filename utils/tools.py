@@ -38,9 +38,12 @@ def fit_peak(wl, np_x, np_y, with_plot=True, plot_components=False):
     comps = out.eval_components(x=many_x)
     print(out.fit_report(min_correl=0.5))
     print('Gaussian line model')
-    print('Mean={:.2f}+/-{:.2f}\tFWHM={:.2f}+/-{:.2f}'.format(
+    try:
+        print('Mean={:.2f}+/-{:.2f}\tFWHM={:.2f}+/-{:.2f}'.format(
            out.params['g1_center'].value, out.params['g1_center'].stderr,
            out.params['g1_fwhm'].value, out.params['g1_fwhm'].stderr))
+    except:
+        print('Fit did not converge')
 
     if with_plot:
         fig = plt.figure()
