@@ -25,21 +25,27 @@ if __name__ == "__main__":
     np_x, np_y = read_data('data/spectre_lampe_calib_100ms.txt')
     # plot spectrum data
     plot_spectrum(np_x, np_y)
+    # define exceptions
+    wl_except=[302, 435, 750, 800, 842, 912]
+    clean_lines = list()
+    for wl in calib_lines:
+        if wl not in wl_except:
+            clean_lines.append(wl)
     # fit all the lines
     fwhm_list=list()
-    for one in calib_lines:
-        fwhm = fit_one_line(one, np_x, np_y, with_plot=False)
+    for one in clean_lines:
+        fwhm = fit_one_line(one, np_x, np_y, with_plot=True)
         fwhm_list.append(fwhm)
 
     # print fwhms
     print()
     print('wl\tfwhm')
-    for wl, fwhm in zip(calib_lines, fwhm_list):
+    for wl, fwhm in zip(clean_lines, fwhm_list):
         print('{:5}\t{:.2f}'.format(wl, fwhm))
 
     # plot resolution
     plt.figure()
-    plt.plot(calib_lines, fwhm_list, '+b')
+    plt.plot(clean_lines, fwhm_list, '+b')
     plt.xlabel(r'$\lambda$ (nm)')
     plt.ylabel('FWHM (nm)')
     # plt.legend()
