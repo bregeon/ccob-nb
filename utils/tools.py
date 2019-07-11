@@ -50,19 +50,6 @@ def fit_peak(wl, np_x, np_y, with_plot=True, plot_components=False):
         out.plot(fig=fig, numpoints=100)
         plt.show()
 
-    # if with_plot:
-    #     plt.figure()
-    #     plt.plot(x, y, 'b+',label='data')
-    #     # plt.plot(many_x, init, 'k--')
-    #     # plt.plot(x, out.best_fit, 'r',label='fit')
-    #     full_model = mod.eval(out.params, x=many_x)
-    #     plt.plot(many_x, full_model, 'r--',label='model')
-    #     plt.legend()
-    #     if plot_components:
-    #         plt.plot(many_x , comps['g1_'], 'b--')
-    #         plt.plot(many_x, comps['exp_'], 'k--')
-    #     plt.show()
-    #
     return out
 
 
