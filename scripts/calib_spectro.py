@@ -30,6 +30,13 @@ if __name__ == "__main__":
     for one in calib_lines:
         fwhm = fit_one_line(one, np_x, np_y, with_plot=False)
         fwhm_list.append(fwhm)
+
+    # print fwhms
+    print()
+    print('wl\tfwhm')
+    for wl, fwhm in zip(calib_lines, fwhm_list):
+        print('{:5}\t{:.2f}'.format(wl, fwhm))
+
     # plot resolution
     plt.figure()
     plt.plot(calib_lines, fwhm_list, '+b')
