@@ -20,8 +20,16 @@ if __name__ == "__main__":
         sys.exit(1)
 
     wl_list = sys.argv[1:]
-    print('wavelenght\tConversion')
-    for one in wl_list:
-        wl = float(one)
+    # check if there is an input current
+    if len(wl_list) == 2:
+        wl = float(wl_list[0])
+        current = float(wl_list[1])
         val = diode.get_value(wl, wl_dict)
+        power = current/val
+        print('wavelenght\tConversion\tCurrent\t\tPower')
+        print('{:<8}\t{:<10}\t{:<10}\t{:<10}'.format(wl, val, current, power))
+    else:
+        wl = float(wl_list[0])
+        val = diode.get_value(wl, wl_dict)
+        print('wavelenght\tConversion')
         print('{:<8}\t{:<10}'.format(wl, val))
