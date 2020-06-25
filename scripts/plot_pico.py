@@ -18,8 +18,9 @@ if __name__ == "__main__":
         python scripts/plot_time_series.py data/ReadPico.csv')
         sys.exit(1)
     file_path = sys.argv[1]
-    
+
     # read data from file
     time_series = read_data(file_path)
     # show full time series
-    plot_time_series(time_series, file_path)
+    plot_time_series(time_series, file_path, save=True)
+    

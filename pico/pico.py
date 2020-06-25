@@ -34,7 +34,7 @@ def print_pico(time_series):
     for date, current in zip(time_series[0], time_series[1]):
         print('{:<12} {:<8}'.format(date, current))
 
-def plot_time_series(time_series, file_path=None):
+def plot_time_series(time_series, file_path=None, save=False):
     ''' Plot a diode response
     '''
     mean_current = np.mean(time_series[1])
@@ -55,6 +55,8 @@ def plot_time_series(time_series, file_path=None):
     plt.legend()
     plt.grid(linestyle='--', linewidth=0.5)
     plt.show()
+    if save:
+        plt.savefig(file_path[:-4]+'.png')
 
 
 if __name__ == "__main__":
