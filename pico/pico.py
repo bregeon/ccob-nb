@@ -54,9 +54,9 @@ def plot_time_series(time_series, file_path=None, save=False):
     plt.text(max_time-30, mean_current*1.013, '+1%')
     plt.legend()
     plt.grid(linestyle='--', linewidth=0.5)
-    plt.show()
     if save:
         plt.savefig(file_path[:-4]+'.png')
+    plt.show()
 
 
 if __name__ == "__main__":
