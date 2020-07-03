@@ -34,7 +34,7 @@ def print_pico(time_series):
     for date, current in zip(time_series[0], time_series[1]):
         print('{:<12} {:<8}'.format(date, current))
 
-def plot_time_series(time_series, file_path=None, save=False):
+def plot_time_series(time_series, wl=None, file_path=None, save=False):
     ''' Plot a diode response
     '''
     mean_current = np.mean(time_series[1])
@@ -45,6 +45,8 @@ def plot_time_series(time_series, file_path=None, save=False):
         label = 'Picoamperemeter - %s'%file_path.split('/')[-1]
     fig = plt.figure(1, figsize=(12, 6))
     plt.plot(time_series[0], time_series[1],'+b', label=label)
+    if wl is not None:
+        plt.title('Current @ %snm'%wl)
     plt.xlabel('Time')
     plt.ylabel('Current')
     plt.ylim(ymin=mean_current*0.98, ymax=mean_current*1.02)
@@ -57,6 +59,32 @@ def plot_time_series(time_series, file_path=None, save=False):
     if save:
         plt.savefig(file_path[:-4]+'.png')
     plt.show()
+
+def make_fig_time_series(time_series, wl=None, file_path=None, save=False):
+    ''' Plot a diode response
+    '''
+    mean_current = np.mean(time_series[1])
+    min_time = min(time_series[0])
+    max_time = max(time_series[0])
+    label='Picoamperemeter time series'
+    if file_path is not None:
+        label = 'Picoamperemeter - %s'%file_path.split('/')[-1]
+    fig = plt.figure(1, figsize=(12, 6))
+    plt.plot(time_series[0], time_series[1],'+b', label=label)
+    if wl is not None:
+        plt.title('Current @ %snm'%wl)
+    plt.xlabel('Time')
+    plt.ylabel('Current')
+    plt.ylim(ymin=mean_current*0.98, ymax=mean_current*1.02)
+    plt.hlines(mean_current*0.99, min_time, max_time, colors='r')
+    plt.hlines(mean_current*1.01, min_time, max_time, colors='r')
+    plt.text(max_time-30, mean_current*0.987, '-1%')
+    plt.text(max_time-30, mean_current*1.013, '+1%')
+    plt.legend()
+    plt.grid(linestyle='--', linewidth=0.5)
+    if save:
+        plt.savefig(file_path[:-4]+'.png')
+    return fig
 
 
 if __name__ == "__main__":
