@@ -5,5 +5,6 @@ Analysis software for the LSST Camera Calibration Optical Bench with the Narrow 
 
 Authors:
   Nicolas Andres
-  Johan Bregeon
+  
+  Johan Bregeon (bregeon@in2p3.fr)
   
