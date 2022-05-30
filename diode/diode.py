@@ -10,14 +10,14 @@ from matplotlib import pyplot  as plt
 import numpy as np
 
 
-def read_data(file_path='../data/diode_response.dat'):
+def read_data(file_path='../diode_calibration_data.dat'):
     ''' Read diode data from a text file
     '''
     wl_dict=dict()
     content = open(file_path).readlines()[1:]
     for line in content:
         one = line.split()
-        wl = int(one[0])
+        wl = float(one[0])
         pow = float(one[1])
         err = float(one[2])
         wl_dict[wl]=(pow, err)
