@@ -22,5 +22,5 @@ if __name__ == "__main__":
     # read data from file
     time_series = read_data(file_path)
     # show full time series
-    plot_time_series(time_series, file_path, save=True)
+    plot_time_series(time_series, file_path, save=False)
     
