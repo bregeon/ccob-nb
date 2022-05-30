@@ -48,7 +48,7 @@ if __name__ == "__main__":
     data_path = './data_01072020'
     wl_series = range(300,1150,50)
 
-    wl_dict = diode.read_data('data/diode_response.dat')
+    wl_dict = diode.read_data('diode/diode_calibration_data.dat')
 
     pow_ave_list = list()
     pow_rms_list = list()
@@ -74,6 +74,7 @@ if __name__ == "__main__":
 
     # make summary power plot
     fig = plt.figure(1, figsize=(15, 9))
+    plt.rcParams.update({'font.size': 22})
     plt.title('Power against wavelenght @ 12000 mm')
     plt.xlabel('Wavelenght (nm)')
     plt.ylabel('Power (nW)')
@@ -82,9 +83,9 @@ if __name__ == "__main__":
     pow_refs = [23, 4, 8]
     # Acquired data
     plt.errorbar(wl_series, pow_ave_list, xerr=1.5, yerr=pow_rms_list,
-                 ls='none', marker='+', label='data')
+                 ls='none', marker='+', label='data', markersize=16)
     plt.errorbar(wl_refs, pow_refs, yerr=1, lolims=True, ls='none',
-                 marker='_', color='red', label='reference')
+                 marker='_', color='red', label='reference', markersize=16)
     plt.legend()
     plt.tight_layout()
     plt.show()
