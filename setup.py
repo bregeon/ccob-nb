@@ -23,5 +23,6 @@ setup(
     install_requires=["matplotlib",
                       "numpy",
                       "scipy",
+                      "lmfit",
                       "setuptools_scm"]
 )
