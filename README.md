@@ -9,9 +9,8 @@ Analysis software for the LSST Camera Calibration Optical Bench with the Narrow 
 > pip install -e .
 ```
 
-Authors:
+Authors: 
 
-  Nicolas Andres
-  
-  Johan Bregeon (bregeon@in2p3.fr)
-  
+    Johan Bregeon (bregeon@in2p3.fr)
+    Nicolas Andres
+ 
