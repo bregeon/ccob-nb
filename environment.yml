@@ -1,0 +1,12 @@
+name: ccob_nb
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - matplotlib
+  - numpy
+  - scipy
+  - jupyter
+  - sphinx
+  - sphinx_rtd_theme
