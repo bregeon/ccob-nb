@@ -9,17 +9,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def connect():
-    ''' Try to connect to the spectrometer
-    '''
-    import seabreeze
-    seabreeze.use("pyseabreeze")
-
-    import seabreeze.spectrometers as sb
-    spec = sb.Spectrometer.from_serial_number()
-    spec.integration_time_micros(20000)
-    spec.wavelengths()
-
 def read_data(file_path):
     ''' Read data from an Oceanview file
     @TODO get info from header
