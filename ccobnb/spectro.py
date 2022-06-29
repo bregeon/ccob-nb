@@ -19,8 +19,11 @@ def read_data(file_path):
     for line in content:
         line = line.replace(',', '.')
         xy = line.split('\t')
-        all_x.append(float(xy[0]))
-        all_y.append(float(xy[1]))
+        try:
+            all_x.append(float(xy[0]))
+            all_y.append(float(xy[1]))
+        except:
+            pass
 
     np_x = np.array(all_x, 'float')
     np_y = np.array(all_y, 'float')
@@ -39,7 +42,7 @@ def plot_spectrum(np_x, np_y):
 
 if __name__ == "__main__":
     # get data from text file
-    np_x, np_y = read_data('data/HDX004411_11-07-07-346.txt')
+    np_x, np_y = read_data('../data/data_12062020_spectro/20200612_103843_Spectrum_A1-I6.csv')
     # print a few lines
     for i in range(10):
         print('{} {}'.format(np_x[i], np_y[i]))

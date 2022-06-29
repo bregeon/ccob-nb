@@ -7,7 +7,7 @@ Created on Mon Jul  1 10:23:22 2019
 
 import sys
 from utils.tools import fit_peak
-from spectro.spectro import read_data, plot_spectrum
+from ccobnb.spectro import read_data, plot_spectrum
 
 
 if __name__ == "__main__":

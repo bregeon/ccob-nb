@@ -7,7 +7,7 @@ Created on Tue 09 Jul 2019 03:30:31 PM CEST
 import matplotlib.pyplot as plt
 import numpy as np
 from lmfit.models import ExponentialModel, GaussianModel
-from spectro.spectro import read_data
+from ccobnb.spectro import read_data
 
 
 def fit_peak(wl, np_x, np_y, with_plot=True, plot_components=False):
@@ -55,5 +55,5 @@ def fit_peak(wl, np_x, np_y, with_plot=True, plot_components=False):
 
 if __name__ == "__main__":
     # get data from text file and fit
-    np_x, np_y = read_data('data/HDX004411_11-07-07-346.txt')
+    np_x, np_y = read_data('../data/data_12062020_spectro/20200612_103843_Spectrum_A1-I6.csv')
     out = fit_peak(400, np_x, np_y, plot_components=False)

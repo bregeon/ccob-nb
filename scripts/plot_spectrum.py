@@ -7,7 +7,7 @@ Created on Mon Jul  10 16:19:22 2019
 
 import sys
 from utils.tools import fit_peak
-from spectro.spectro import read_data, plot_spectrum
+from ccobnb.spectro import read_data, plot_spectrum
 
 
 if __name__ == "__main__":
@@ -15,7 +15,7 @@ if __name__ == "__main__":
     if len(sys.argv[1:]) < 1:
         print('Please give a file path to a spectrum')
         print('Try:\n \
-        python scripts/plot_spectrum.py data/HDX004411_11-07-07-346.txt')
+        python scripts/plot_spectrum.py ../data/data_12062020_spectro/20200612_103843_Spectrum_A1-I6.csv')
         sys.exit(1)
     file_path = sys.argv[1]
 
