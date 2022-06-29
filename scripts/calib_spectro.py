@@ -11,7 +11,7 @@ from lmfit.models import ExponentialModel, GaussianModel
 
 from data.Hg2_calibration_lamp import calib_lines
 from utils.tools import fit_peak
-from spectro.spectro import read_data, plot_spectrum
+from ccobnb.spectro import read_data, plot_spectrum
 
 
 def fit_one_line(wl, np_x, np_y, with_plot=True, plot_components=False):
