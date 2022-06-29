@@ -1,7 +1,13 @@
 # ccob-nb
 Analysis software for the LSST Camera Calibration Optical Bench with the Narrow Beam
 
-> conda create --name ccob-nb --file conda_spec-file.txt 
+```
+> git clone git@github.com:bregeon/ccob-nb.git
+> cd ccob-nb
+> conda env create -f environment.yml
+> conda activate ccob_nb
+> pip install -e .
+```
 
 Authors:
 
