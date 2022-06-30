@@ -7,7 +7,7 @@ Created on Thu June  25 12:27 2020
 
 import sys
 from utils.tools import fit_peak
-from pico.pico import read_data, plot_time_series
+from ccobnb.pico import read_data, plot_time_series
 
 
 if __name__ == "__main__":
@@ -15,7 +15,7 @@ if __name__ == "__main__":
     if len(sys.argv[1:]) < 1:
         print('Please give a file path to a spectrum')
         print('Try:\n \
-        python scripts/plot_time_series.py data/ReadPico.csv')
+        python scripts/plot_time_series.py example_data/PicoRead_600nm_v2.csv')
         sys.exit(1)
     file_path = sys.argv[1]
 
