@@ -9,8 +9,8 @@ import os
 import sys
 from glob import glob
 from utils.tools import fit_peak
-from pico import pico
-from diode import diode
+from ccobnb import pico
+from ccobnb import diode
 from matplotlib import pyplot  as plt
 import numpy as np
 
@@ -18,7 +18,6 @@ import numpy as np
 def make_light_fig_time_series(time_series, wl, file_path, save=False):
     ''' Plot a diode response converted to light output
     '''
-    from diode import diode
     mean_current = np.mean(time_series[1])
     min_time = min(time_series[0])
     max_time = max(time_series[0])
@@ -45,10 +44,10 @@ def make_light_fig_time_series(time_series, wl, file_path, save=False):
 if __name__ == "__main__":
     """ do all the stuff
     """
-    data_path = './data_01072020'
+    data_path = '../data/data_01072020'
     wl_series = range(300,1150,50)
 
-    wl_dict = diode.read_data('diode/diode_calibration_data.dat')
+    wl_dict = diode.read_data('calib/diode_calibration_data.dat')
 
     pow_ave_list = list()
     pow_rms_list = list()
