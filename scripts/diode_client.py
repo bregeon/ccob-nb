@@ -9,11 +9,11 @@ give it wavelenght, it will return the conversion factor (nA/nW)
 """
 
 import sys
-from diode import diode
+from ccobnb import diode
 
 if __name__ == "__main__":
     # get data from text file
-    wl_dict = diode.read_data('data/diode_response.dat')
+    wl_dict = diode.read_data('calib/diode_calibration_data.dat')
     # Check that there is a wavelenght
     if len(sys.argv[1:]) < 1:
         print('Please give a wavelength')
