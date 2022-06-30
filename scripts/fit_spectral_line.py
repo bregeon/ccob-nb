@@ -15,7 +15,7 @@ if __name__ == "__main__":
     if len(sys.argv[1:]) < 2:
         print('Please give a file path and a wavelength')
         print('Try:\n \
-        python scripts/fit_spectral_line.py data/HDX004411_11-07-07-346.txt 400')
+        python scripts/fit_spectral_line.py ../data/data_12062020_spectro/20200612_103843_Spectrum_A1-I6.csv 304')
         sys.exit(1)
     file_path = sys.argv[1]
     wl = int(sys.argv[2])
