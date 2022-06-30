@@ -16,8 +16,8 @@ def fit_peak(wl, np_x, np_y, with_plot=True, plot_components=False):
         x axis values as a numpy array
         y axis values as a numpy array
     '''
-    i_min = len(np_x)-sum(np_x>wl) - 10
-    i_max = len(np_x)-sum(np_x>wl) + 10
+    i_min = len(np_x)-sum(np_x > wl) - 10
+    i_max = len(np_x)-sum(np_x > wl) + 10
 
     x = np_x[i_min:i_max]
     many_x = np.arange(x[0], x[-1], 0.01)
