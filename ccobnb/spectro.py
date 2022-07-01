@@ -9,6 +9,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+def hg_calib_lines(file_path='./calib/Hg_Ar_spectral_lines.dat'):
+    """
+    Get Hg calib lines from data file
+    """
+    content = open(file_path).readlines()[1:]
+    lines_list = [float(line) for line in content]
+    return lines_list
+
 def read_data(file_path):
     ''' Read data from an Oceanview file
     @TODO get info from header

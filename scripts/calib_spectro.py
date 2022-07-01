@@ -9,9 +9,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from lmfit.models import ExponentialModel, GaussianModel
 
-from data.Hg2_calibration_lamp import calib_lines
 from utils.tools import fit_peak
-from ccobnb.spectro import read_data, plot_spectrum
+from ccobnb.spectro import hg_calib_lines, read_data, plot_spectrum
 
 
 def fit_one_line(wl, np_x, np_y, with_plot=True, plot_components=False):
@@ -22,13 +21,13 @@ def fit_one_line(wl, np_x, np_y, with_plot=True, plot_components=False):
 
 if __name__ == "__main__":
     # read spectrum data
-    np_x, np_y = read_data('data/spectre_lampe_calib_100ms.txt')
+    np_x, np_y = read_data('example_data/hg_spectrum.csv')
     # plot spectrum data
     plot_spectrum(np_x, np_y)
     # define exceptions
     wl_except=[302, 435, 750, 800, 842, 912]
     clean_lines = list()
-    for wl in calib_lines:
+    for wl in hg_calib_lines():
         if wl not in wl_except:
             clean_lines.append(wl)
     # fit all the lines
