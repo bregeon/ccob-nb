@@ -3,7 +3,7 @@
 """
 Created on Tue 09 Jul 2019 04:43:23 PM CEST
 
-@author: bregeon
+@author: Johan Bregeon (bregeon@in2p3.fr)
 """
 import matplotlib.pyplot as plt
 import numpy as np

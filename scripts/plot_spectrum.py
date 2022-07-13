@@ -2,7 +2,7 @@
 """
 Created on Mon Jul  10 16:19:22 2019
 
-@author: Johan Bregeon
+@author: Johan Bregeon (bregeon@in2p3.fr)
 """
 
 import sys

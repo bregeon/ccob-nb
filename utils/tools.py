@@ -1,7 +1,7 @@
 """
 Created on Tue 09 Jul 2019 03:30:31 PM CEST
 
-@author: Johan Bregeon
+@author: Johan Bregeon Johan Bregeon (bregeon@in2p3.fr)
 """
 
 import matplotlib.pyplot as plt

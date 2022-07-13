@@ -5,7 +5,7 @@ Created on Tue 09 Jul 2019 02:55:09 PM CEST
 Client to the diode module
 give it wavelenght, it will return the conversion factor (nA/nW)
 
-@author: Johan Bregeon
+@author: Johan Bregeon (bregeon@in2p3.fr)
 """
 
 import sys
