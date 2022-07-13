@@ -11,7 +11,7 @@ import numpy as np
 from datetime import datetime
 
 
-def read_data(file_path='../data/PicoRead.csv'):
+def read_data(file_path='example_data/PicoRead_600nm_v2.csv'):
     ''' Read diode data from a text file
     '''
     date_list = list()
@@ -27,12 +27,14 @@ def read_data(file_path='../data/PicoRead.csv'):
     time_series = (date_array, current_array)
     return time_series
 
+
 def print_pico(time_series):
     ''' Format a pico time series
     '''
     print('Date\tCurrent')
     for date, current in zip(time_series[0], time_series[1]):
         print('{:<12} {:<8}'.format(date, current))
+
 
 def plot_time_series(time_series, wl=None, file_path=None, save=False):
     ''' Plot a diode response
@@ -59,6 +61,7 @@ def plot_time_series(time_series, wl=None, file_path=None, save=False):
     if save:
         plt.savefig(file_path[:-4]+'.png')
     plt.show()
+
 
 def make_fig_time_series(time_series, wl=None, file_path=None, save=False):
     ''' Plot a diode response
