@@ -17,26 +17,32 @@ def hg_calib_lines(file_path='./calib/Hg_Ar_spectral_lines.dat'):
     lines_list = [float(line) for line in content]
     return lines_list
 
+
 def read_data(file_path):
     ''' Read data from an Oceanview file
-    @TODO get info from header
     '''
-    content = open(file_path).readlines()[14:]
-    all_x = list()
-    all_y = list()
+    content = open(file_path).readlines()
+    all_nm = list()
+    all_raw = list()
+    all_signal = list()
     for line in content:
-        line = line.replace(',', '.')
-        xy = line.split('\t')
-        try:
-            all_x.append(float(xy[0]))
-            all_y.append(float(xy[1]))
-        except:
+        if line[0] in ['#', 'W', 'U']:
+            print(line.strip('\n'))
+        elif len(line.split('\t')) != 3:
             pass
+        elif len(line.split('\t')) == 3:
+            line = line.replace(',', '.')
+            data = line.split('\t')
+            all_nm.append(float(data[0]))
+            all_raw.append(float(data[1]))
+            all_signal.append(float(data[1]))
 
-    np_x = np.array(all_x, 'float')
-    np_y = np.array(all_y, 'float')
+    np_nm = np.array(all_nm, 'float')
+    np_raw = np.array(all_raw, 'float')
+    np_signal = np.array(all_signal, 'float')
 
-    return np_x, np_y
+    return np_nm, np_raw, np_signal
+
 
 def plot_spectrum(np_x, np_y):
     ''' Plot a spectrum from x and y numpy arrays
@@ -44,15 +50,15 @@ def plot_spectrum(np_x, np_y):
     plt.figure()
     plt.plot(np_x, np_y, 'b+--',label='data')
     plt.xlabel(r'$\lambda$ (nm)')
-    plt.ylabel('Counts')
+    plt.ylabel('Corrected signal (ADC counts)')
     plt.show()
 
 
 if __name__ == "__main__":
     # get data from text file
-    np_x, np_y = read_data('../data/data_12062020_spectro/20200612_103843_Spectrum_A1-I6.csv')
+    np_nm, np_raw, np_signal = read_data('./example_data/hg_spectrum.dat')
     # print a few lines
     for i in range(10):
-        print('{} {}'.format(np_x[i], np_y[i]))
+        print('{} {}'.format(np_nm[i], np_signal[i]))
     # plot data
-    plot_spectrum(np_x, np_y)
+    plot_spectrum(np_nm, np_signal)

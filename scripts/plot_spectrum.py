@@ -15,11 +15,11 @@ if __name__ == "__main__":
     if len(sys.argv[1:]) < 1:
         print('Please give a file path to a spectrum')
         print('Try:\n \
-        python scripts/plot_spectrum.py ../data/data_12062020_spectro/20200612_103843_Spectrum_A1-I6.csv')
+        python scripts/plot_spectrum.py ./example_data/hg_spectrum.dat')
         sys.exit(1)
     file_path = sys.argv[1]
 
     # read data from file
-    np_x, np_y = read_data(file_path)
+    np_nm, np_raw, np_signal = read_data(file_path)
     # show full spectrum
-    plot_spectrum(np_x, np_y)
+    plot_spectrum(np_nm, np_signal)
