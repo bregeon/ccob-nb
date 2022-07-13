@@ -15,37 +15,29 @@ from matplotlib import pyplot  as plt
 import numpy as np
 
 
-def make_light_fig_time_series(time_series, wl, file_path, save=False):
-    ''' Plot a diode response converted to light output
-    '''
-    mean_current = np.mean(time_series[1])
-    min_time = min(time_series[0])
-    max_time = max(time_series[0])
-    label='Photodiode time series'
-    if file_path is not None:
-        label = 'Picoamperemeter - %s'%file_path.split('/')[-1]
-    fig = plt.figure(1, figsize=(12, 6))
-    plt.plot(time_series[0], time_series[1],'+b', label=label)
-    if wl is not None:
-        plt.title('Power @ %snm'%wl)
-    plt.xlabel('Date - Time')
-    plt.ylabel('Power (nW)')
-    plt.ylim(ymin=mean_current*0.98, ymax=mean_current*1.02)
-    plt.hlines(mean_current*0.99, min_time, max_time, colors='r')
-    plt.hlines(mean_current*1.01, min_time, max_time, colors='r')
-    plt.text(max_time-30, mean_current*0.987, '-1%')
-    plt.text(max_time-30, mean_current*1.013, '+1%')
-    plt.legend()
-    plt.grid(linestyle='--', linewidth=0.5)
-    if save:
-        plt.savefig(file_path[:-4]+'.png')
-    return fig
-
 if __name__ == "__main__":
     """ do all the stuff
     """
-    data_path = '../data/data_01072020'
+    # Data taking of July 1st 2020
+    # 17 mesurements from 300 nm to 1100 nm by step of 50 nm
     wl_series = range(300,1150,50)
+    pico_files = """../data/data_01072020/PicoRead_20200701-110942.csv
+    ../data/data_01072020/PicoRead_20200701-112510.csv
+    ../data/data_01072020/PicoRead_20200701-114036.csv
+    ../data/data_01072020/PicoRead_20200701-115602.csv
+    ../data/data_01072020/PicoRead_20200701-121130.csv
+    ../data/data_01072020/PicoRead_20200701-122657.csv
+    ../data/data_01072020/PicoRead_20200701-124225.csv
+    ../data/data_01072020/PicoRead_20200701-125752.csv
+    ../data/data_01072020/PicoRead_20200701-131320.csv
+    ../data/data_01072020/PicoRead_20200701-132858.csv
+    ../data/data_01072020/PicoRead_20200701-134425.csv
+    ../data/data_01072020/PicoRead_20200701-135951.csv
+    ../data/data_01072020/PicoRead_20200701-141517.csv
+    ../data/data_01072020/PicoRead_20200701-143044.csv
+    ../data/data_01072020/PicoRead_20200701-144610.csv
+    ../data/data_01072020/PicoRead_20200701-150138.csv
+    ../data/data_01072020/PicoRead_20200701-151706.csv""".split()
 
     wl_dict = diode.read_data('calib/diode_calibration_data.dat')
 
@@ -53,8 +45,7 @@ if __name__ == "__main__":
     pow_rms_list = list()
 
     # make stability plots for each wl
-    pico_files = glob(os.path.join(data_path,'PicoRead_20200701*.csv'))
-    pico_files.sort()
+
     for wl, file_path in zip(wl_series, pico_files):
         print(wl, file_path)
         # read data from file
@@ -68,7 +59,7 @@ if __name__ == "__main__":
         pow_rms_list.append(np.std(powers))
         # show full time series
         time_series = (times, powers)
-        fig = make_light_fig_time_series(time_series, wl=wl, file_path=file_path, save=True)
+        fig = pico.make_fig_time_series(time_series, wl=wl, file_path=file_path, save=True)
         plt.show()
 
     # make summary power plot
