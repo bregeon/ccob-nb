@@ -15,7 +15,7 @@ if __name__ == "__main__":
     if len(sys.argv[1:]) < 1:
         print('Please give a file path to a spectrum')
         print('Try:\n \
-        python scripts/plot_time_series.py example_data/PicoRead_600nm_v2.csv')
+        python scripts/plot_pico.py  example_data/PicoRead_600nm_v2.csv')
         sys.exit(1)
     file_path = sys.argv[1]
 
