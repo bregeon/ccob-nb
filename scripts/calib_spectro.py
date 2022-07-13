@@ -35,6 +35,7 @@ if __name__ == "__main__":
     mean_list = list()
     fwhm_list=list()
     for one in clean_lines:
+        # tweak below in you wish to visualize all the fits
         mean, fwhm = fit_one_line(one, np_nm, np_signal, with_plot=False)
         mean_list.append(mean)
         fwhm_list.append(fwhm)
